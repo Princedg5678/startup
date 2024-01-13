@@ -1,1 +1,1 @@
-1/12/24: I have never used Git befor,e and it sure is interesting! I can't wait to see what is next!
+1/12/24: I have never used Git before and it sure is interesting! I can't wait to see what is next!
