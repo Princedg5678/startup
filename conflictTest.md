@@ -1,1 +1,1 @@
-Goodbye World!!
+I am gone.
