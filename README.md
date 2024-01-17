@@ -7,6 +7,7 @@ My restaurant, The Blast Zone Cafe, a futuristic-themed restaurant known for cre
 
 ### Design
 
+![Elevator Pitch](https://github.com/Princedg5678/startup/assets/156490330/0876eee6-3e49-4b17-9a59-21d495f26131)
 
 
 ### Key features
