@@ -3,13 +3,10 @@
 ### Key features
 
 - Secure login over HTTPS
-- Ability to select the question to decide
+- Ability to select a list of potential menu items
 - Display of choices
-- Ability to select, and change, top three choices
-- Totals from all users displayed in realtime
-- Ability for a user to lock in their top three
-- Results are persistently stored
-- Ability for admin to create and delete questions
+- Top-Three Voting System
+
 
 ### Technologies
 
@@ -23,8 +20,8 @@ I am going to use the required technologies in the following ways.
   - retrieving choices
   - submitting votes
   - retrieving vote status
-- **DB/Login** - Store users, choices, and votes in database. Register and login users. Credentials securely stored in database. Can't vote unless authenticated.
-- **WebSocket** - As each user votes, their votes are broadcast to all other users.
+- **DB/Login** - Store restaurant owners live info
+- **WebSocket** - As each user votes, update the votes live.
 - **React** - Application ported to use the React web framework.
 
 
