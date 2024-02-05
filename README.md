@@ -35,3 +35,12 @@ I am going to use the required technologies in the following ways.
 - **React** - Application ported to use the React web framework.
 
 
+### Update Log: HTML Deliverable:
+
+HTML pages - Two HTML page that represent the ability to login and vote on the menu designs.
+Links - The login page automatically links to the ranking page and vice versa.
+Text - Each of the menu items has a text description. Currently they are placeholders
+Images - I included the images for the possible menu items
+DB/Login - Input box and submit button for login. The voting choices represent data pulled from the database.
+WebSocket - The count of menu rating results represent the tally of realtime votes.
+
