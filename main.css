@@ -51,6 +51,11 @@ th {
   border: 8px solid maroon;
 }
 
+img {
+  width: "300px";
+  height: "300px";
+}
+
 footer {
   background-color: crimson;
   color: white;
