@@ -36,8 +36,8 @@ main {
 }
 
 table,
-th,
-td {
+tr,
+th {
   border: 2px solid black;
 }
 
@@ -55,4 +55,13 @@ footer {
   background-color: crimson;
   color: white;
   flex: 0;
+}
+
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
 }
