@@ -22,6 +22,7 @@ td {
   justify-content: center;
   align-items: center;
   height: 97vh;
+  gap: 0.25em;
   flex-direction: column;
   border: 3px solid maroon;
 }
