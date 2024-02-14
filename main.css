@@ -16,6 +16,21 @@ body {
   margin: 0;
 }
 
+a:link,
+a:visited {
+  background-color: green;
+  color: white;
+  padding: 14px 25px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  background-color: goldenrod;
+}
+
 main {
   flex: 1;
 }
@@ -38,5 +53,6 @@ td {
 
 footer {
   background-color: crimson;
+  color: white;
   flex: 0;
 }
