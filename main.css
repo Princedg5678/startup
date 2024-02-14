@@ -6,9 +6,18 @@
 
 header {
   background-color: chocolate;
+  flex: 0 50px;
 }
 body {
   background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
 }
 
 table,
@@ -21,12 +30,13 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 97vh;
+  height: 100vh;
   gap: 0.25em;
   flex-direction: column;
-  border: 3px solid maroon;
+  border: 8px solid maroon;
 }
 
 footer {
   background-color: crimson;
+  flex: 0;
 }
