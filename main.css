@@ -11,6 +11,12 @@ body {
   background-color: cadetblue;
 }
 
+table,
+th,
+td {
+  border: 2px solid black;
+}
+
 footer {
   background-color: crimson;
 }
