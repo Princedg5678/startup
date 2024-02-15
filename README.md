@@ -44,3 +44,13 @@ I am going to use the required technologies in the following ways.
 - DB/Login - Input box and submit button for login. The voting choices represent data pulled from the database.
 - WebSocket - The count of menu rating results represent the tally of realtime votes.
 
+### Update Log: HTML Deliverable:
+
+- Header, footer, and main content body - Properly styled these components
+- Navigation elements - The login page automatically links to the ranking page and vice versa. The link is now also properly styled as well.
+- Responsive to window resizing - The login page login is centered regardless of page size. The header and footer of the main page vanish when the page is shrunk to a certain size
+- Application elements - I made sure the images were the right size, and that everything looked neat. I also added color and a border around the table.
+- Application text content - The text of the pages are now properly stylized
+- Application images - The three images are set to a certain and consistient size.
+
+
