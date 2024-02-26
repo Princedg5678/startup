@@ -15,7 +15,7 @@ Midterm 1 :
 8. following code 2: cow: rat :fish (join code)
 9. ['a1', 'a2', 'a3']
 10. Adds a mouseover event listener to a p element
-11. <ul> is unordered list
+11. ul is unordered list
 12. function f(x) = {} is not a vaild JS funtion
 13. <javascript>1+1</javascript> not a vaild way to include JS in HTML
 14. { n:1 } is a valid JS object
