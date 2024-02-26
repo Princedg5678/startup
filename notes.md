@@ -28,4 +28,3 @@ Midterm 1 :
 21. CNAME points to another DNS record type
 22. Following code: burger fries taco shake noodles 
 23. Following Code: A D B
--->
