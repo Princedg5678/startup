@@ -20,7 +20,7 @@ Midterm 1 :
 13. <javascript>1+1</javascript> not a vaild way to include JS in HTML
 14. { n:1 } is a valid JS object
 15. The DOM textContent propterty sets the child text for the an element
-16. <a href='insert hyperlink here'>x</a> is a valid HTML hyperlink
+16. a href='insert hyperlink here'>x</a is a valid HTML hyperlink
 17. div.header { color: blue; } turns the color blue
 18. {"x":3} is valid in JSON
 19. chmod +x deploy.sh makes a script executable
