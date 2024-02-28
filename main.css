@@ -42,6 +42,10 @@ th {
   border: 2px solid black;
 }
 
+#username {
+  display: inline;
+}
+
 .Login {
   display: flex;
   justify-content: center;
