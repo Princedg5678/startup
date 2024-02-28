@@ -1,3 +1,3 @@
-const myUsername = getElementByID("Username");
+const myUsername = document.getElementById("Username");
 const username = localStorage.getItem("userName");
 myUsername.textContent = `Username: ${username}`;
