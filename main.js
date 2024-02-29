@@ -12,7 +12,7 @@ function rateItem(item) {
 
   const aID = "average" + item;
   const avg = document.getElementById(aID);
-  const newAverage = findAverageRating(item);
+  const newAverage = findAverageRating(item).toFixed(1);
   avg.textContent = "Average Rating: " + newAverage;
 }
 
@@ -26,3 +26,13 @@ function findAverageRating(item) {
   let average = sum / ratings.length;
   return average;
 }
+
+/*
+setInterval(() => {
+  const score = Math.floor(Math.random() * 3000);
+  const chatText = document.querySelector("#player-messages");
+  chatText.innerHTML =
+    `<div class="event"><span class="player-event">Eich</span> scored ${score}</div>` +
+    chatText.innerHTML;
+}, 5000);
+*/
