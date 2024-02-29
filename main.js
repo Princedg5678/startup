@@ -27,9 +27,17 @@ function findAverageRating(item) {
   return average;
 }
 
+let iterations = 0;
+
 setInterval(() => {
   const chatText = document.querySelector("#messageContainer");
   chatText.innerHTML =
     `<div class="event"><span class="player-event">Devyn</span> has rated!</div>` +
     chatText.innerHTML;
+  iterations++;
+  if (iterations > 5) {
+    const message = document.querySelector(".event");
+    console.log(message);
+    chatText.removeChild(message);
+  }
 }, 5000);

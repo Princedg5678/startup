@@ -81,4 +81,7 @@ footer {
   height: 100%;
   width: 250px;
   justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
