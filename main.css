@@ -33,6 +33,7 @@ a:active {
 }
 
 main {
+  display: flex;
   flex: 1;
 }
 
@@ -74,4 +75,10 @@ footer {
   footer {
     display: none;
   }
+}
+
+#messageContainer {
+  height: 100%;
+  width: 250px;
+  justify-self: end;
 }

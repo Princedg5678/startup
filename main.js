@@ -27,12 +27,9 @@ function findAverageRating(item) {
   return average;
 }
 
-/*
 setInterval(() => {
-  const score = Math.floor(Math.random() * 3000);
-  const chatText = document.querySelector("#player-messages");
+  const chatText = document.querySelector("#messageContainer");
   chatText.innerHTML =
-    `<div class="event"><span class="player-event">Eich</span> scored ${score}</div>` +
+    `<div class="event"><span class="player-event">Devyn</span> has rated!</div>` +
     chatText.innerHTML;
 }, 5000);
-*/
