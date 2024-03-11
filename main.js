@@ -43,9 +43,14 @@ setInterval(() => {
 }, 5000);
 
 async function fetchJoke() {
-  const response = await fetch("https://icanhazdadjoke.com/");
-  const data = await response.json();
-  return data;
+  const response = await fetch("https://icanhazdadjoke.com/", {
+    headers: {
+      Accept: "text/plain",
+    },
+  });
+  const text = await response.text();
+  document.getElementById("dadJoke").textContent =
+    "Dad Joke of the Day: " + text;
 }
 
 window.onload = fetchJoke;
