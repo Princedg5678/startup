@@ -44,7 +44,7 @@ I am going to use the required technologies in the following ways.
 - DB/Login - Input box and submit button for login. The voting choices represent data pulled from the database.
 - WebSocket - The count of menu rating results represent the tally of realtime votes.
 
-### Update Log: HTML Deliverable:
+### Update Log: CSS Deliverable:
 
 - Header, footer, and main content body - Properly styled these components
 - Navigation elements - The login page automatically links to the ranking page and vice versa. The link is now also properly styled as well.
@@ -53,4 +53,9 @@ I am going to use the required technologies in the following ways.
 - Application text content - The text of the pages are now properly stylized
 - Application images - The three images are set to a certain and consistient size.
 
+### Update Log: JS Deliverable:
 
+- Added JavaScript support for future login: Added username and login with username being displayed on main page.
+- Added JavaScript support for future database data: added way to store ratings and calcuate and display the average.
+- Added JavaScript support for future WebSocket: added support for a chat box with a notifcation system that reports when someone submits a rating.
+- Added JavaScript support for your application's interaction logic: All of the above, plus navigation between pages.
