@@ -41,3 +41,11 @@ setInterval(() => {
     chatText.removeChild(message);
   }
 }, 5000);
+
+async function fetchJoke() {
+  const response = await fetch("https://icanhazdadjoke.com/");
+  const data = await response.json();
+  return data;
+}
+
+window.onload = fetchJoke;
