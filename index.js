@@ -24,7 +24,7 @@ apiRouter.post("/login", (request, response) => {
 });
 
 apiRouter.get("/user", (request, response) => {
-  response.send(username);
+  response.send({ username });
 });
 
 // Return the application's default page if the path is unknown
