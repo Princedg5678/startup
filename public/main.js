@@ -3,6 +3,7 @@ let username = "";
 const url = "/api/user";
 fetch(url).then((response) => {
   username = response;
+  console.log(response);
   myUsername.textContent = `Username: ${username}`;
 });
 
