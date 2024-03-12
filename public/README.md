@@ -59,3 +59,10 @@ I am going to use the required technologies in the following ways.
 - Added JavaScript support for future database data: added way to store ratings and calcuate and display the average.
 - Added JavaScript support for future WebSocket: added support for a chat box with a notifcation system that reports when someone submits a rating.
 - Added JavaScript support for your application's interaction logic: All of the above, plus navigation between pages.
+
+### Update Log: Service Deliverable:
+
+- Created an HTTP service using Node.js and Express
+- Added: Frontend served up using Express static middleware
+- My frontend calls third party service endpoints: Added random dad joke when page is loaded.
+- My frontend and backend provides service endpoints. Endpoints are /api, /login, /user
