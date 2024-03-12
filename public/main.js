@@ -1,5 +1,5 @@
 const myUsername = document.getElementById("Username");
-const username = "";
+let username = "";
 const url = "/api/user";
 fetch(url).then((response) => {
   username = response;
