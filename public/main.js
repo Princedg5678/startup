@@ -1,5 +1,15 @@
 const myUsername = document.getElementById("Username");
-const username = localStorage.getItem("userName");
+//const username = localStorage.getItem("userName");
+const url = "index.js";
+fetch(url)
+  .then((x) => x.json())
+  .then((response) => {
+    document.querySelector("pre").textContent = JSON.stringify(
+      response,
+      null,
+      "  "
+    );
+  });
 myUsername.textContent = `Username: ${username}`;
 
 let ratingLists = { ratingList1: [], ratingList2: [], ratingList3: [] };

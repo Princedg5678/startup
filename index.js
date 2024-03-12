@@ -14,10 +14,17 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+const username = "";
+const password = "";
+
 apiRouter.post("/login", (request, response) => {
-  const username = request.body.username;
-  const password = request.body.password;
+  username = request.body.username;
+  password = request.body.password;
   console.log(username, password);
+});
+
+apiRouter.get("/user", (request, response) => {
+  response.send(username);
 });
 
 // Return the application's default page if the path is unknown
