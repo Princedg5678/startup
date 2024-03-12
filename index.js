@@ -14,6 +14,10 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+apiRouter.use("/login", (request, response) => {
+  console.log(request.body);
+});
+
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile("index.html", { root: "public" });
