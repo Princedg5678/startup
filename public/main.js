@@ -1,16 +1,12 @@
 const myUsername = document.getElementById("Username");
-//const username = localStorage.getItem("userName");
-const url = "index.js";
+const username = "";
+const url = "/api/user";
 fetch(url)
   .then((x) => x.json())
   .then((response) => {
-    document.querySelector("pre").textContent = JSON.stringify(
-      response,
-      null,
-      "  "
-    );
+    username = response;
+    myUsername.textContent = `Username: ${username}`;
   });
-myUsername.textContent = `Username: ${username}`;
 
 let ratingLists = { ratingList1: [], ratingList2: [], ratingList3: [] };
 
