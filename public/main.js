@@ -4,7 +4,7 @@ const url = "/api/user";
 fetch(url)
   .then((x) => x.json())
   .then((response) => {
-    //console.log(response);
+    console.log(response);
     username = response.username;
     myUsername.textContent = `Username: ${username}`;
   });
