@@ -14,8 +14,8 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-const username = "";
-const password = "";
+let username = "";
+let password = "";
 
 apiRouter.post("/login", (request, response) => {
   username = request.body.username;
