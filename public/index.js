@@ -5,7 +5,6 @@ async function login() {
   localStorage.setItem("password", passwordEl.value);
   window.location.href = "main.html";
 
-  //const data = (username, password);
   const data = { username: nameEl.value, password: passwordEl.value };
 
   const response = await fetch("/api/login", {
