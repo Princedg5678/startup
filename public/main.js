@@ -1,11 +1,13 @@
 const myUsername = document.getElementById("Username");
 let username = "";
 const url = "/api/user";
-fetch(url).then((response) => {
-  username = response;
-  console.log(response);
-  myUsername.textContent = `Username: ${username}`;
-});
+fetch(url)
+  .then((x) => x.json())
+  .then((response) => {
+    console.log(response);
+    username = response;
+    myUsername.textContent = `Username: ${username}`;
+  });
 
 let ratingLists = { ratingList1: [], ratingList2: [], ratingList3: [] };
 
