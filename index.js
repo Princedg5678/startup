@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const DB = require("./database.js");
 
+const authCookieName = "token";
+
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -22,10 +24,10 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth token for a new user
 apiRouter.post("/create", async (req, res) => {
-  if (await DB.getUser(req.body.email)) {
+  if (await DB.getUser(req.body.username)) {
     res.status(409).send({ msg: "Existing user" });
   } else {
-    const user = await DB.createUser(req.body.email, req.body.password);
+    const user = await DB.createUser(req.body.username, req.body.password);
 
     // Set the cookie
     setAuthCookie(res, user.token);
@@ -38,7 +40,7 @@ apiRouter.post("/create", async (req, res) => {
 
 // GetAuth token for the provided credentials
 apiRouter.post("/login", async (req, res) => {
-  const user = await DB.getUser(req.body.email);
+  const user = await DB.getUser(req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       setAuthCookie(res, user.token);
@@ -55,12 +57,6 @@ apiRouter.delete("/logout", (_req, res) => {
   res.status(204).end();
 });
 
-apiRouter.post("/login", (request, response) => {
-  username = request.body.username;
-  password = request.body.password;
-  console.log(username, password);
-});
-
 apiRouter.get("/user", (request, response) => {
   response.send({ username });
 });
@@ -73,3 +69,11 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: "strict",
+  });
+}

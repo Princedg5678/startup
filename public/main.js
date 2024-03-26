@@ -1,13 +1,13 @@
 const myUsername = document.getElementById("Username");
 let username = "";
 const url = "/api/user";
-fetch(url)
+/*fetch(url)
   .then((x) => x.json())
   .then((response) => {
     //console.log(response);
     username = response.username;
     myUsername.textContent = `Username: ${username}`;
-  });
+  }); */
 
 let ratingLists = { ratingList1: [], ratingList2: [], ratingList3: [] };
 
@@ -61,3 +61,19 @@ async function fetchJoke() {
 }
 
 window.onload = fetchJoke;
+
+async function logout() {
+  const response = await fetch("/api/logout", {
+    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  });
+
+  window.location.href = "index.html";
+}
