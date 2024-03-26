@@ -19,13 +19,14 @@ body {
 
 a:link,
 a:visited,
-.button {
+a {
   background-color: green;
   color: white;
   padding: 14px 25px;
   display: inline-block;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover,
