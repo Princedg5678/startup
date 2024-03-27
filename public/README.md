@@ -66,3 +66,11 @@ I am going to use the required technologies in the following ways.
 - Added: Frontend served up using Express static middleware
 - My frontend calls third party service endpoints: Added random dad joke when page is loaded.
 - My frontend and backend provides service endpoints. Endpoints are /api, /login, /user
+
+### Update Log: Login Deliverable:
+
+- Supports new user registration
+- Supports existing user authentication
+- Stores application data in MongoDB
+- Stores and retrieves credentials in MongoDB
+- Restricts application functionality based upon authentication
