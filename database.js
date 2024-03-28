@@ -7,6 +7,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db("blastZone");
 const userCollection = db.collection("user");
+const ratingCollection = db.collection("avgRating");
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -39,6 +40,22 @@ async function createUser(username, password) {
   await userCollection.insertOne(user);
 
   return user;
+}
+
+function getRating(username) {
+  return ratingCollection.findOne({ avgRating: avgRating });
+}
+
+async function createRatings() {
+  const rating1 = {
+    avgRating: avgRating,
+  };
+  const rating2 = {
+    avgRating: avgRating,
+  };
+  const rating3 = {
+    avgRating: avgRating,
+  };
 }
 
 module.exports = {
