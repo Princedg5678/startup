@@ -47,38 +47,3 @@ async function createUser() {
     window.location.href = "main.html";
   }
 }
-
-let socket;
-
-//Reconfigure these to work with my code:
-function configureWebSocket() {
-  const protocol = window.location.protocol === "http:" ? "ws" : "wss";
-  socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-  socket.onopen = (event) => {
-    displayMsg("system", "submit");
-  };
-  socket.onclose = (event) => {
-    displayMsg("system", "submit");
-  };
-  socket.onmessage = async (event) => {
-    const msg = JSON.parse(await event.data.text());
-    if (msg.type === GameEndEvent) {
-      displayMsg(username, " has rated!");
-    }
-  };
-
-  function displayMsg(username, msg) {
-    const chatText = document.querySelector("#messageContainer");
-    chatText.innerHTML =
-      `<div class="event">${username} ${msg}</div>` + chatText.innerHTML;
-  }
-
-  function broadcastEvent(from, type, value) {
-    const event = {
-      from: from,
-      type: type,
-      value: value,
-    };
-    socket.send(JSON.stringify(event));
-  }
-}
