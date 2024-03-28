@@ -21,6 +21,7 @@ function rateItem(item) {
   const avg = document.getElementById(aID);
   const newAverage = findAverageRating(item).toFixed(1);
   avg.textContent = "Average Rating: " + newAverage;
+  broadcastEvent(username);
 }
 
 function findAverageRating(item) {
@@ -96,19 +97,17 @@ function configureWebSocket() {
       displayMsg(username, " has rated!");
     }
   };
+}
 
-  function displayMsg(username, msg) {
-    const chatText = document.querySelector("#messageContainer");
-    chatText.innerHTML =
-      `<div class="event">${username} ${msg}</div>` + chatText.innerHTML;
-  }
+function displayMsg(username, msg) {
+  const chatText = document.querySelector("#messageContainer");
+  chatText.innerHTML =
+    `<div class="event">${username} ${msg}</div>` + chatText.innerHTML;
+}
 
-  function broadcastEvent(from, type, value) {
-    const event = {
-      from: from,
-      type: type,
-      value: value,
-    };
-    socket.send(JSON.stringify(event));
-  }
+function broadcastEvent(username) {
+  const event = {
+    username: username,
+  };
+  socket.send(JSON.stringify(event));
 }
