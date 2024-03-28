@@ -37,6 +37,7 @@ function findAverageRating(item) {
 
 let iterations = 0;
 
+/*
 setInterval(() => {
   const chatText = document.querySelector("#messageContainer");
   chatText.innerHTML =
@@ -49,6 +50,7 @@ setInterval(() => {
     chatText.removeChild(message);
   }
 }, 5000);
+*/
 
 async function fetchJoke() {
   const response = await fetch("https://icanhazdadjoke.com/", {
@@ -93,16 +95,21 @@ function configureWebSocket() {
   };
   socket.onmessage = async (event) => {
     const msg = JSON.parse(await event.data.text());
-    if (msg.type === GameEndEvent) {
-      displayMsg(username, " has rated!");
-    }
+    displayMsg(username, " has rated!");
   };
 }
 
 function displayMsg(username, msg) {
   const chatText = document.querySelector("#messageContainer");
   chatText.innerHTML =
-    `<div class="event">${username} ${msg}</div>` + chatText.innerHTML;
+    `<div class="event"><span class="player-event">${username}</span> has rated!</div>` +
+    chatText.innerHTML;
+  iterations++;
+  if (iterations > 5) {
+    const message = document.querySelector(".event");
+    console.log(message);
+    chatText.removeChild(message);
+  }
 }
 
 function broadcastEvent(username) {
