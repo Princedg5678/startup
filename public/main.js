@@ -118,3 +118,5 @@ function broadcastEvent(username) {
   };
   socket.send(JSON.stringify(event));
 }
+
+configureWebSocket();
