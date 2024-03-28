@@ -55,33 +55,30 @@ function configureWebSocket() {
   const protocol = window.location.protocol === "http:" ? "ws" : "wss";
   socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
   socket.onopen = (event) => {
-    displayMsg("system", "game", "connected");
+    displayMsg("system", "submit");
   };
   socket.onclose = (event) => {
-    displayMsg("system", "game", "disconnected");
+    displayMsg("system", "submit");
   };
   socket.onmessage = async (event) => {
     const msg = JSON.parse(await event.data.text());
     if (msg.type === GameEndEvent) {
-      displayMsg("player", msg.from, `scored ${msg.value.score}`);
-    } else if (msg.type === GameStartEvent) {
-      displayMsg("player", msg.from, `started a new game`);
+      displayMsg(username, " has rated!");
     }
   };
-}
 
-function displayMsg(cls, from, msg) {
-  const chatText = document.querySelector("#player-messages");
-  chatText.innerHTML =
-    `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` +
-    chatText.innerHTML;
-}
+  function displayMsg(username, msg) {
+    const chatText = document.querySelector("#messageContainer");
+    chatText.innerHTML =
+      `<div class="event">${username} ${msg}</div>` + chatText.innerHTML;
+  }
 
-function broadcastEvent(from, type, value) {
-  const event = {
-    from: from,
-    type: type,
-    value: value,
-  };
-  socket.send(JSON.stringify(event));
+  function broadcastEvent(from, type, value) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    socket.send(JSON.stringify(event));
+  }
 }
