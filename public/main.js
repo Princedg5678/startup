@@ -88,21 +88,21 @@ function configureWebSocket() {
   const protocol = window.location.protocol === "http:" ? "ws" : "wss";
   socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
   socket.onopen = (event) => {
-    displayMsg(username, "submit");
+    displayMsg(username, "has joined!");
   };
   socket.onclose = (event) => {
-    displayMsg(username, "submit");
+    displayMsg(username, "has left!");
   };
   socket.onmessage = async (event) => {
     const msg = JSON.parse(await event.data.text());
-    displayMsg(username, " has rated!");
+    displayMsg(msg.username, " has rated!");
   };
 }
 
 function displayMsg(username, msg) {
   const chatText = document.querySelector("#messageContainer");
   chatText.innerHTML =
-    `<div class="event"><span class="player-event">${username}</span> has rated!</div>` +
+    `<div class="event"><span class="player-event">${username}</span>${msg}</div>` +
     chatText.innerHTML;
   iterations++;
   if (iterations > 5) {
