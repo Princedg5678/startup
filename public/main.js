@@ -21,7 +21,7 @@ function rateItem(item) {
   const avg = document.getElementById(aID);
   const newAverage = findAverageRating(item).toFixed(1);
   avg.textContent = "Average Rating: " + newAverage;
-  broadcastEvent(username);
+  broadcastEvent(username, "rate");
 }
 
 function findAverageRating(item) {
@@ -80,22 +80,24 @@ async function logout() {
 
   window.location.href = "index.html";
 }
-
 let socket;
-
 //Reconfigure these to work with my code:
-function configureWebSocket() {
+async function configureWebSocket() {
   const protocol = window.location.protocol === "http:" ? "ws" : "wss";
-  socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+  socket = await new WebSocket(`${protocol}://${window.location.host}/ws`);
   socket.onopen = (event) => {
-    displayMsg(username, " has joined!");
+    displayMsg(username, " connected to server!");
   };
   socket.onclose = (event) => {
-    displayMsg(username, " has left!");
+    displayMsg(username, " disconnected.");
   };
   socket.onmessage = async (event) => {
     const msg = JSON.parse(await event.data.text());
-    displayMsg(msg.username, " has rated!");
+    if (msg.type === "rate") {
+      displayMsg(msg.username, " has rated!");
+    } else if (msg.type === "join") {
+      displayMsg(msg.username, " has joined!");
+    }
   };
 }
 
@@ -112,12 +114,12 @@ function displayMsg(username, msg) {
   }
 }
 
-function broadcastEvent(username) {
+function broadcastEvent(username, type) {
   const event = {
+    type: type,
     username: username,
   };
   socket.send(JSON.stringify(event));
 }
 
 configureWebSocket();
-broadcastEvent(username);
