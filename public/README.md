@@ -74,3 +74,10 @@ I am going to use the required technologies in the following ways.
 - Stores application data in MongoDB
 - Stores and retrieves credentials in MongoDB
 - Restricts application functionality based upon authentication
+
+### Update Log: Websocket Deliverable:
+
+Backend listens for WebSocket connection
+Frontend makes WebSocket connection
+Data sent over WebSocket connection
+WebSocket data displayed in the application interface - displays whenever a user makes a rating.
