@@ -8,17 +8,20 @@ const client = new MongoClient(url);
 const db = client.db("blastZone");
 const userCollection = db.collection("user");
 const ratingCollection = db.collection("avgRating");
-
-// This will asynchronously test the connection and exit the process if it fails
-(async function testConnection() {
-  await client.connect();
-  await db.command({ ping: 1 });
-})().catch((ex) => {
-  console.log(
-    `Unable to connect to database with ${url} because ${ex.message}`
-  );
-  process.exit(1);
-});
+const submissionCollection = db
+  .collection("userSubmissions")(
+    // This will asynchronously test the connection and exit the process if it fails
+    async function testConnection() {
+      await client.connect();
+      await db.command({ ping: 1 });
+    }
+  )()
+  .catch((ex) => {
+    console.log(
+      `Unable to connect to database with ${url} because ${ex.message}`
+    );
+    process.exit(1);
+  });
 
 function getUser(username) {
   return userCollection.findOne({ username: username });
@@ -42,19 +45,51 @@ async function createUser(username, password) {
   return user;
 }
 
-function getRating(username) {
-  return ratingCollection.findOne({ avgRating: avgRating });
+function getRating1(username) {
+  return ratingCollection.findOne({ ratings1: ratings1 });
+}
+
+function getRating2(username) {
+  return ratingCollection.findOne({ ratings2: ratings2 });
+}
+
+function getRating3(username) {
+  return ratingCollection.findOne({ ratings3: ratings3 });
 }
 
 async function createRatings() {
   const rating1 = {
-    avgRating: avgRating,
+    ratings1: ratings1,
   };
   const rating2 = {
-    avgRating: avgRating,
+    ratings2: ratings2,
   };
   const rating3 = {
-    avgRating: avgRating,
+    ratings3: ratings3,
+  };
+}
+
+function getSubmssion1(username) {
+  return ratingCollection.findOne({ submissions1: submissions1 });
+}
+
+function getSubmssion2(username) {
+  return ratingCollection.findOne({ submissions2: submissions2 });
+}
+
+function getSubmssion3(username) {
+  return ratingCollection.findOne({ submissions3: submissions3 });
+}
+
+async function createSubmission() {
+  const submission1 = {
+    submissions1: submissions1,
+  };
+  const submission2 = {
+    submissions2: submissions2,
+  };
+  const submission3 = {
+    submissions3: submissions3,
   };
 }
 
@@ -62,4 +97,12 @@ module.exports = {
   getUser,
   getUserByToken,
   createUser,
+  getRating1,
+  getRating2,
+  getRating3,
+  createRatings,
+  getSubmssion1,
+  getSubmssion2,
+  getSubmssion3,
+  createSubmission,
 };

@@ -53,7 +53,7 @@ apiRouter.post("/login", async (req, res) => {
 });
 
 // DeleteAuth token if stored in cookie
-apiRouter.delete("/logout", (_req, res) => {
+secureApiRouter.delete("/logout", (_req, res) => {
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
@@ -80,3 +80,17 @@ function setAuthCookie(res, authToken) {
     sameSite: "strict",
   });
 }
+
+// secureApiRouter verifies credentials for endpoints
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: "Unauthorized" });
+  }
+});
