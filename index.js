@@ -114,3 +114,9 @@ secureApiRouter.post("/rating", async (req, res) => {
   await DB.createRatings(data.storedKey, data.storedRating);
   res.sendStatus(200);
 });
+
+//getRatings
+secureApiRouter.get("/rating", async (req, res) => {
+  await DB.getRatings();
+  res.sendStatus(200);
+});

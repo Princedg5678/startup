@@ -9,7 +9,11 @@ const url = "/api/user";
     username = response.username;
   }); */
 
-let ratingLists = { ratingList1: [], ratingList2: [], ratingList3: [] };
+let ratingLists = {};
+
+async function getList() {
+  ratingLists = await fetch("/api/rating");
+}
 
 async function rateItem(item) {
   const ID = "rating" + item;

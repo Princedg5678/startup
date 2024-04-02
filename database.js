@@ -43,16 +43,9 @@ async function createUser(username, password) {
   return user;
 }
 
-function getRating1(username) {
-  return ratingCollection.findOne({ ratings1: ratings1 });
-}
-
-function getRating2(username) {
-  return ratingCollection.findOne({ ratings2: ratings2 });
-}
-
-function getRating3(username) {
-  return ratingCollection.findOne({ ratings3: ratings3 });
+async function getRatings() {
+  const cursor = await ratingCollection.find({});
+  return cursor.toArray()[0];
 }
 
 async function createRatings(listKey, rating) {
@@ -74,7 +67,7 @@ async function createRatings(listKey, rating) {
     options
   );
 }
-
+/*
 function getSubmssion1(username) {
   return ratingCollection.findOne({ submissions1: submissions1 });
 }
@@ -98,17 +91,15 @@ async function createSubmission() {
     submissions3: submissions3,
   };
 }
-
+*/
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  getRating1,
-  getRating2,
-  getRating3,
+  getRatings,
   createRatings,
-  getSubmssion1,
+  /*getSubmssion1,
   getSubmssion2,
   getSubmssion3,
-  createSubmission,
+  createSubmission,*/
 };
