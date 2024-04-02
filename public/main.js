@@ -11,11 +11,24 @@ const url = "/api/user";
 
 let ratingLists = { ratingList1: [], ratingList2: [], ratingList3: [] };
 
-function rateItem(item) {
+async function rateItem(item) {
   const ID = "rating" + item;
   const rating = Number(document.getElementById(ID).value);
   const key = "ratingList" + item;
   ratingLists[key].push(rating);
+
+  const data = { storedRating: rating, storedKey: key };
+
+  const response = await fetch("/api/rating", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (response.status === 200) {
+    console.log("Posted Rating");
+  }
 
   const aID = "average" + item;
   const avg = document.getElementById(aID);

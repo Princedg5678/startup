@@ -13,6 +13,8 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 // JSON body parsing using built-in middleware
 app.use(express.json());
 
+app.use(cookieParser());
+
 // Serve up the front-end static content hosting
 app.use(express.static("public"));
 
@@ -52,12 +54,6 @@ apiRouter.post("/login", async (req, res) => {
   res.status(401).send({ msg: "Unauthorized" });
 });
 
-// DeleteAuth token if stored in cookie
-secureApiRouter.delete("/logout", (_req, res) => {
-  res.clearCookie(authCookieName);
-  res.status(204).end();
-});
-
 apiRouter.get("/user", (request, response) => {
   response.send({ username });
 });
@@ -74,6 +70,7 @@ const httpService = app.listen(port, () => {
 peerProxy(httpService);
 
 function setAuthCookie(res, authToken) {
+  console.log("Cookie Created");
   res.cookie(authCookieName, authToken, {
     secure: true,
     httpOnly: true,
@@ -82,10 +79,11 @@ function setAuthCookie(res, authToken) {
 }
 
 // secureApiRouter verifies credentials for endpoints
-var secureApiRouter = express.Router();
+const secureApiRouter = express.Router();
 apiRouter.use(secureApiRouter);
 
 secureApiRouter.use(async (req, res, next) => {
+  console.log(req.cookies, "token");
   authToken = req.cookies[authCookieName];
   const user = await DB.getUserByToken(authToken);
   if (user) {
@@ -93,4 +91,26 @@ secureApiRouter.use(async (req, res, next) => {
   } else {
     res.status(401).send({ msg: "Unauthorized" });
   }
+});
+
+// DeleteAuth token if stored in cookie
+secureApiRouter.delete("/logout", (_req, res) => {
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
+
+// GetRatings
+/*
+secureApiRouter.get("/scores", async (req, res) => {
+  const scores = await DB.getHighScores();
+  res.send(scores);
+});
+*/
+
+// SubmitRating
+secureApiRouter.post("/rating", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  await DB.createRatings(data.storedKey, data.storedRating);
+  res.sendStatus(200);
 });

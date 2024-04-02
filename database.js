@@ -8,20 +8,18 @@ const client = new MongoClient(url);
 const db = client.db("blastZone");
 const userCollection = db.collection("user");
 const ratingCollection = db.collection("avgRating");
-const submissionCollection = db
-  .collection("userSubmissions")(
-    // This will asynchronously test the connection and exit the process if it fails
-    async function testConnection() {
-      await client.connect();
-      await db.command({ ping: 1 });
-    }
-  )()
-  .catch((ex) => {
-    console.log(
-      `Unable to connect to database with ${url} because ${ex.message}`
-    );
-    process.exit(1);
-  });
+const submissionCollection = db.collection("userSubmissions");
+
+// This will asynchronously test the connection and exit the process if it fails
+(async function testConnection() {
+  await client.connect();
+  await db.command({ ping: 1 });
+})().catch((ex) => {
+  console.log(
+    `Unable to connect to database with ${url} because ${ex.message}`
+  );
+  process.exit(1);
+});
 
 function getUser(username) {
   return userCollection.findOne({ username: username });
@@ -57,16 +55,24 @@ function getRating3(username) {
   return ratingCollection.findOne({ ratings3: ratings3 });
 }
 
-async function createRatings() {
-  const rating1 = {
-    ratings1: ratings1,
+async function createRatings(listKey, rating) {
+  // Filter to check if the document exists
+  const filter = {};
+
+  // Update operation
+  const updateOperation = {
+    $push: { [`ratingList${listKey}`]: rating },
   };
-  const rating2 = {
-    ratings2: ratings2,
-  };
-  const rating3 = {
-    ratings3: ratings3,
-  };
+
+  // Options for upsert
+  const options = { upsert: true };
+
+  // Perform the upsert operation
+  const updateResult = await ratingCollection.updateOne(
+    filter,
+    updateOperation,
+    options
+  );
 }
 
 function getSubmssion1(username) {
