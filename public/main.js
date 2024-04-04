@@ -9,16 +9,38 @@ const url = "/api/user";
     username = response.username;
   }); */
 
-let ratingLists = {};
+//let ratingLists = {};
+async function getListFromServer() {
+  let response = await fetch("/api/rating");
+  ratingLists = await response.json();
+  console.log(ratingLists);
+  return ratingLists;
+}
 
-async function getList() {
-  ratingLists = await fetch("/api/rating");
+async function updateList(ratingLists) {
+  let item = ratingLists.ratingList1;
+  let avg = document.getElementById("average1");
+  let newAverage = findAverageRating(item).toFixed(1);
+  avg.textContent = "Average Rating: " + newAverage;
+
+  item = ratingLists.ratingList2;
+  avg = document.getElementById("average2");
+  newAverage = findAverageRating(item).toFixed(1);
+  avg.textContent = "Average Rating: " + newAverage;
+
+  item = ratingLists.ratingList3;
+  avg = document.getElementById("average3");
+  newAverage = findAverageRating(item).toFixed(1);
+  avg.textContent = "Average Rating: " + newAverage;
 }
 
 async function rateItem(item) {
+  let ratingLists = await getListFromServer();
   const ID = "rating" + item;
   const rating = Number(document.getElementById(ID).value);
   const key = "ratingList" + item;
+  //console.log(rating);
+  //ratingLists[key] = [];
   ratingLists[key].push(rating);
 
   const data = { storedRating: rating, storedKey: key };
@@ -34,18 +56,20 @@ async function rateItem(item) {
     console.log("Posted Rating");
   }
 
+  const realItem = ratingLists[key];
   const aID = "average" + item;
   const avg = document.getElementById(aID);
-  const newAverage = findAverageRating(item).toFixed(1);
+  const newAverage = findAverageRating(realItem).toFixed(1);
   avg.textContent = "Average Rating: " + newAverage;
   broadcastEvent(username, "rate");
 }
 
-function findAverageRating(item) {
-  const key = "ratingList" + item;
-  const ratings = ratingLists[key];
+function findAverageRating(ratings) {
+  //const key = "ratingList" + item;
+  // const ratings = ratingLists[key];
+  console.log(ratings);
   let sum = 0;
-  for (rating of ratings) {
+  for (let rating of ratings) {
     sum = sum + rating;
   }
   let average = sum / ratings.length;
@@ -140,3 +164,8 @@ function broadcastEvent(username, type) {
 }
 
 configureWebSocket();
+
+(async () => {
+  let list = await getListFromServer();
+  updateList(list);
+})();

@@ -45,7 +45,15 @@ async function createUser(username, password) {
 
 async function getRatings() {
   const cursor = await ratingCollection.find({});
-  return cursor.toArray()[0];
+  const data = await cursor.toArray();
+  if (data.length == 0) {
+    data.push({
+      ratingList1: [],
+      ratingList2: [],
+      ratingList3: [],
+    });
+  }
+  return data[0];
 }
 
 async function createRatings(listKey, rating) {
@@ -54,7 +62,7 @@ async function createRatings(listKey, rating) {
 
   // Update operation
   const updateOperation = {
-    $push: { [`ratingList${listKey}`]: rating },
+    $push: { [`${listKey}`]: rating },
   };
 
   // Options for upsert
