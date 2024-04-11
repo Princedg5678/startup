@@ -177,7 +177,7 @@ setInterval(() => {
       <header>
         <div>
           <nav>
-            <a onclick="logout()">Logout</a>
+            <a onClick={() => logout()}>Logout</a>
             <p id="Username">Username:</p>
           </nav>
         </div>
@@ -225,15 +225,15 @@ setInterval(() => {
           <tr>
             <th>
               <input id="rating1" type="number" min="1" max="10" />
-              <button onClick="rateItem(1)">Submit</button>
+              <button onClick={() => rateItem(1)}>Submit</button>
             </th>
             <th>
               <input id="rating2" type="number" min="1" max="10" />
-              <button onClick="rateItem(2)">Submit</button>
+              <button onClick={() => rateItem(2)}>Submit</button>
             </th>
             <th>
               <input id="rating3" type="number" min="1" max="10" />
-              <button onClick="rateItem(3)">Submit</button>
+              <button onClick={() => rateItem(3)}>Submit</button>
             </th>
           </tr>
           <tr>
