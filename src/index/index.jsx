@@ -61,8 +61,8 @@ export function Index({}) {
         <input type="password" id="password" name="varPassword" />
       </div>
       <div>
-        <a onClick="createUser()">Create User</a>
-        <a onClick="login()">Login</a>
+        <a onClick={() => createUser()}>Create User</a>
+        <a onClick={() => login()}>Login</a>
       </div>
     </div>
   );
