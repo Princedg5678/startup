@@ -62,6 +62,7 @@ export function Index({}) {
           id="username"
           name="varUsername"
           value={username}
+          onChange={(e) => updateUsername(e.target.value)}
         />
       </div>
       <div>
@@ -71,6 +72,7 @@ export function Index({}) {
           id="password"
           name="varPassword"
           value={password}
+          onChange={(e) => updatePassword(e.target.value)}
         />
       </div>
       <div>
