@@ -5,12 +5,12 @@ export function Index({}) {
   const [password, updatePassword] = React.useState("");
 
   async function login() {
-    const nameEl = document.querySelector("#username");
-    localStorage.setItem("userName", nameEl.value);
-    const passwordEl = document.querySelector("#password");
-    localStorage.setItem("password", passwordEl.value);
+    //const nameEl = document.querySelector("#username");
+    localStorage.setItem("userName", username);
+    //const passwordEl = document.querySelector("#password");
+    localStorage.setItem("password", password);
 
-    const data = { username: nameEl.value, password: passwordEl.value };
+    const data = { username: username, password: password };
 
     const response = await fetch("/api/login", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
