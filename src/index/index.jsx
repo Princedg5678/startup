@@ -53,11 +53,11 @@ export function Index({}) {
   return (
     <div class="Login">
       <div>
-        <label for="username">Username: </label>
+        <label htmlFor="username">Username: </label>
         <input type="username" id="username" name="varUsername" />
       </div>
       <div>
-        <label for="password">Password: </label>
+        <label htmlFor="password">Password: </label>
         <input type="password" id="password" name="varPassword" />
       </div>
       <div>
