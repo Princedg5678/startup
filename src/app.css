@@ -21,7 +21,7 @@ a:link,
 a:visited,
 a {
   background-color: green;
-  color: white;
+  color: white !important;
   padding: 14px 25px;
   display: inline-block;
   text-align: center;
@@ -57,6 +57,7 @@ th {
   gap: 0.25em;
   flex-direction: column;
   border: 8px solid maroon;
+  width: 100%;
 }
 
 img {
