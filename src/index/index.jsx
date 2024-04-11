@@ -1,6 +1,9 @@
 import React from "react";
 
 export function Index({}) {
+  const [username, updateUsername] = React.useState("");
+  const [password, updatePassword] = React.useState("");
+
   async function login() {
     const nameEl = document.querySelector("#username");
     localStorage.setItem("userName", nameEl.value);
