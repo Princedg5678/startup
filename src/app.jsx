@@ -1,6 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
+import { Index } from "./index/index";
+import { Main } from "./main/main";
 
 export default function App() {
   return (
@@ -25,7 +27,10 @@ export default function App() {
         </header>
 
         <main>
-          <Routes></Routes>
+          <Routes>
+            <Route path="/" element={<Index />} exact />
+            <Route path="/" element={<Main />} exact />
+          </Routes>
         </main>
 
         <footer>
