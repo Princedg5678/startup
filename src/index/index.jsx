@@ -57,11 +57,21 @@ export function Index({}) {
     <div class="Login">
       <div>
         <label htmlFor="username">Username: </label>
-        <input type="username" id="username" name="varUsername" />
+        <input
+          type="username"
+          id="username"
+          name="varUsername"
+          value={username}
+        />
       </div>
       <div>
         <label htmlFor="password">Password: </label>
-        <input type="password" id="password" name="varPassword" />
+        <input
+          type="password"
+          id="password"
+          name="varPassword"
+          value={password}
+        />
       </div>
       <div>
         <a onClick={() => createUser()}>Create User</a>
