@@ -81,3 +81,10 @@ Backend listens for WebSocket connection
 Frontend makes WebSocket connection
 Data sent over WebSocket connection
 WebSocket data displayed in the application interface - displays whenever a user makes a rating.
+
+### Update Log: React Deliverable:
+
+Now Bundled using Vite
+Added Multiple functional react components
+Installed React router
+Added React hooks
