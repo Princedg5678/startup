@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Index({}) {
   const [username, updateUsername] = React.useState("");
   const [password, updatePassword] = React.useState("");
+
+  const navigate = useNavigate();
 
   async function login() {
     //const nameEl = document.querySelector("#username");
@@ -25,7 +28,8 @@ export function Index({}) {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     if (response.status === 200) {
-      window.location.href = "main.html";
+      //window.location.href = "main";
+      navigate("/main");
     }
   }
 
@@ -50,11 +54,12 @@ export function Index({}) {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     if (response.status === 200) {
-      window.location.href = "main.html";
+      //window.location.href = "main";
+      navigate("/main");
     }
   }
   return (
-    <div class="Login">
+    <div className="Login">
       <div>
         <label htmlFor="username">Username: </label>
         <input

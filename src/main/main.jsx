@@ -1,18 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Main({}) {
-  const myUsername = document.getElementById("Username");
+  /*const myUsername = document.getElementById("Username");
   let username = localStorage.getItem("userName");
-  myUsername.textContent = `Username: ${username}`;
+  myUsername.textContent = `Username: ${username}`;*/
+  const [username, setUsername] = React.useState(
+    localStorage.getItem("userName")
+  );
   const url = "/api/user";
-  /*fetch(url)
-  .then((x) => x.json())
-  .then((response) => {
-    //console.log(response);
-    username = response.username;
-  }); */
 
-  //let ratingLists = {};
+  const navigate = useNavigate();
+
   async function getListFromServer() {
     let response = await fetch("/api/rating");
     ratingLists = await response.json();
@@ -122,7 +121,8 @@ setInterval(() => {
       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     });
 
-    window.location.href = "index.html";
+    //window.location.href = "index";
+    navigate("/index");
   }
   let socket;
   //Reconfigure these to work with my code:
@@ -178,7 +178,7 @@ setInterval(() => {
         <div>
           <nav>
             <a onClick={() => logout()}>Logout</a>
-            <p id="Username">Username:</p>
+            <p id="Username">Username: {username}</p>
           </nav>
         </div>
 
